@@ -2,7 +2,7 @@ userInput = prompt ("rock paper scissors ?");
 
 inputCheck (userInput);
 
-//inputCheck is a function that makes sure the user input is either rock paper or scissors 
+// inputCheck is a function that makes sure the user input is either rock paper or scissors 
 
 function inputCheck (userInput){
 
@@ -26,29 +26,35 @@ const choices = ['rock', 'paper', 'scissors'];
 function getPcChoice (x){
 
 const pcChoice = Math.floor(Math.random() * x.length);
-console.log(x[pcChoice]);
 return (x[pcChoice]);
-
 }
 
-let pc= getPcChoice(choices);
+let pcChoice= getPcChoice(choices);
 
-function game (pc,userInput){
-if (userInput==pc){
+console.log (userInput, pcChoice);
+
+//PlayRound function plays a round of good ol' rock paper scissors
+
+function playRound (x,y){
+
+if (x==y){
     return ("oi it's a draw")
 }  
- if (userInput== "rock"){
-    if(pc=="paper"){return("Paper beats rock dumb shit")}
-    else if (pc == "scissors") {return("congrats shit head")}
+ if (x== "rock"){
+    if(y=="paper"){result ="Paper beats rock dumb shit";}
+    else if (y == "scissors") {result ="congrats shit head";}
  }
- if (userInput== "paper"){
-    if(pc=="scissors"){return("scissors beat paper dumb shit")}
-    else if (pc == "rock") {return("congrats shit head")}
+ if (x== "paper"){
+    if(y=="scissors"){result ="scissors beat paper dumb shit";}
+    else if (y == "rock") {result ="congrats shit head";}
  }
- if (userInput== "scissors"){
-    if(pc=="rock"){return("Rock beats scissors dumb shit")}
-    else if (pc == "paper") {return("congrats shit head")}
+ if (x== "scissors"){
+    if(y=="rock"){result ="Rock beats scissors dumb shit";}
+    else if (y == "paper") {result ="congrats shit head";}
  }
-  
+
+ return (result);
 }
-game (pc,userInput);
+
+let roundResult= playRound (userInput,pcChoice);
+console.log(roundResult);
