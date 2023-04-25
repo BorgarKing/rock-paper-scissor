@@ -1,18 +1,19 @@
-userInput = prompt ("rock paper scissors ?");
-
-inputCheck (userInput);
+let userInput =inputCheck (prompt ("rock paper scissors ?"));
 
 // inputCheck is a function that makes sure the user input is either rock paper or scissors 
 
-function inputCheck (userInput){
+function inputCheck (x){
 
 
-    if (userInput == "rock" || userInput == "paper" || userInput == "scissors"){ }
+    if (x == "rock" || x == "paper" || x == "scissors"){
+
+        return (x);
+     }
     
     else{
         alert ("it's rock paper scissors man how hard can it be come on !");
-        window.userInput= prompt("Try again");
-        return (inputCheck(window.userInput));
+        x= prompt("Try again");
+        return (inputCheck(x));
         
     }
 }
