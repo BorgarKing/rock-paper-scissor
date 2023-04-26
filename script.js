@@ -17,9 +17,6 @@ function inputCheck (x){
         
     }
 }
-
-console.log (userInput);
-
 //getPcChoice is a function that returns a random selection from the choices array
 
 const choices = ['rock', 'paper', 'scissors'];    
@@ -38,23 +35,25 @@ console.log (userInput, pcChoice);
 
 function playRound (x,y){
 
+    let i = 0; //player counter
+    let j = 0; //pc counter 
+    
 if (x==y){
     return ("oi it's a draw")
 }  
  if (x== "rock"){
-    if(y=="paper"){result ="Paper beats rock dumb shit";}
-    else if (y == "scissors") {result ="congrats shit head";}
+    if(y=="paper"){return (`paper beats rock, you lost ${j+=1} round(s)`);}
+    else if (y == "scissors") {return (`congrats you won ${i+=1} round(s)`)}
  }
  if (x== "paper"){
-    if(y=="scissors"){result ="scissors beat paper dumb shit";}
-    else if (y == "rock") {result ="congrats shit head";}
+    if(y=="scissors"){return (`scissors beat paper, you lost ${j+=1} round(s)`)}
+    else if (y == "rock") {return (`congrats you won ${i+=1} round(s)`)}
  }
  if (x== "scissors"){
-    if(y=="rock"){result ="Rock beats scissors dumb shit";}
-    else if (y == "paper") {result ="congrats shit head";}
+    if(y=="rock"){return (`rock beats scissors, you lost ${j+=1} round(s)`)}
+    else if (y == "paper") {return (`congrats you won ${i+=1} round(s)`)}
  }
 
- return (result);
 }
 
 let roundResult= playRound (userInput,pcChoice);
