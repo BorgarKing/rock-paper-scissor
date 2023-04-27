@@ -1,13 +1,13 @@
-let userInput =inputCheck (prompt ("rock paper scissors ?"));
+let i = 0; //player counter
+let j = 0; //pc counter 
 
 // inputCheck is a function that makes sure the user input is either rock paper or scissors 
 
 function inputCheck (x){
 
+    if (x.toLowerCase() == "rock" || x.toLowerCase() == "paper" || x.toLowerCase() == "scissors"){
 
-    if (x == "rock" || x == "paper" || x == "scissors"){
-
-        return (x);
+        return (x.toLowerCase());
      }
     
     else{
@@ -17,6 +17,9 @@ function inputCheck (x){
         
     }
 }
+
+// let userInput =inputCheck (prompt ("rock paper scissors ?"));
+
 //getPcChoice is a function that returns a random selection from the choices array
 
 const choices = ['rock', 'paper', 'scissors'];    
@@ -27,17 +30,10 @@ const pcChoice = Math.floor(Math.random() * x.length);
 return (x[pcChoice]);
 }
 
-let pcChoice= getPcChoice(choices);
-
-console.log (userInput, pcChoice);
-
 //PlayRound function plays a round of good ol' rock paper scissors
 
 function playRound (x,y){
 
-    let i = 0; //player counter
-    let j = 0; //pc counter 
-    
 if (x==y){
     return ("oi it's a draw")
 }  
@@ -56,5 +52,26 @@ if (x==y){
 
 }
 
-let roundResult= playRound (userInput,pcChoice);
-console.log(roundResult);
+//play a best of 5 game vs the PC
+
+function game (){
+
+    while (i<3 && j<3){
+        let userInput =inputCheck (prompt ("rock paper scissors ?"));
+        let pcChoice= getPcChoice(choices);
+        let roundResult= playRound (userInput,pcChoice);
+
+        console.log (`Your play: ${userInput} \nPC play: ${pcChoice}`);
+        console.log (i,j);
+        console.log(roundResult);
+
+        return (game()) ;
+    }
+
+    if (i==3){ return console.log("You won the game bro cheers !")}
+
+    else if (j==3) {return console.log("tough luck buddy here's to living and fighting another day")}
+
+}
+
+game() ;
