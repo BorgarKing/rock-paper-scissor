@@ -3,22 +3,20 @@ let j = 0; //pc counter
 
 // inputCheck is a function that makes sure the user input is either rock paper or scissors 
 
-function inputCheck (x){
+// function inputCheck (x){
 
-    if (x.toLowerCase() == "rock" || x.toLowerCase() == "paper" || x.toLowerCase() == "scissors"){
+//     if (x.toLowerCase() == "rock" || x.toLowerCase() == "paper" || x.toLowerCase() == "scissors"){
 
-        return (x.toLowerCase());
-     }
+//         return (x.toLowerCase());
+//      }
     
-    else{
-        alert ("it's rock paper scissors man how hard can it be come on !");
-        x= prompt("Try again");
-        return (inputCheck(x));
+//     else{
+//         alert ("it's rock paper scissors man how hard can it be come on !");
+//         x= prompt("Try again");
+//         return (inputCheck(x));
         
-    }
-}
-
-// let userInput =inputCheck (prompt ("rock paper scissors ?"));
+//     }
+// }
 
 //getPcChoice is a function that returns a random selection from the choices array
 
