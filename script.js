@@ -1,32 +1,33 @@
 let i = 0; //player counter
 let j = 0; //pc counter 
+let userInput='';
+let pcChoice ='';
+let roundResult='';
 
-// inputCheck is a function that makes sure the user input is either rock paper or scissors 
+const buttons = document.querySelectorAll('button')
 
-// function inputCheck (x){
+buttons.forEach(button=>{
+    button.addEventListener('click',()=>{
+        userInput= button.textContent.toLowerCase();
+        pcChoice=getPcChoice();
+        roundResult=playRound(userInput,pcChoice)
+            console.log (`Your play: ${userInput}`);
+            console.log (`PC play: ${pcChoice}`);
+            console.log (roundResult);
+        return(roundResult)
+    })
+   
+})
 
-//     if (x.toLowerCase() == "rock" || x.toLowerCase() == "paper" || x.toLowerCase() == "scissors"){
 
-//         return (x.toLowerCase());
-//      }
-    
-//     else{
-//         alert ("it's rock paper scissors man how hard can it be come on !");
-//         x= prompt("Try again");
-//         return (inputCheck(x));
-        
-//     }
-// }
+  
 
-//getPcChoice is a function that returns a random selection from the choices array
-
-const choices = ['rock', 'paper', 'scissors'];    
-
-function getPcChoice (x){
-
-const pcChoice = Math.floor(Math.random() * x.length);
-return (x[pcChoice]);
+function getPcChoice (){
+const choices = ['rock', 'paper', 'scissors'];  
+const pcPlay = Math.floor(Math.random() * choices.length);
+return (choices[pcPlay]);
 }
+
 
 //PlayRound function plays a round of good ol' rock paper scissors
 
@@ -55,9 +56,8 @@ if (x==y){
 function game (){
 
     while (i<3 && j<3){
-        let userInput =inputCheck (prompt ("rock paper scissors ?"));
-        let pcChoice= getPcChoice(choices);
-        let roundResult= playRound (userInput,pcChoice);
+        pcChoice= getPcChoice();
+        roundResult= playRound (userInput,pcChoice);
 
         console.log (`Your play: ${userInput} \nPC play: ${pcChoice}`);
         console.log (i,j);
@@ -72,4 +72,3 @@ function game (){
 
 }
 
-game() ;
