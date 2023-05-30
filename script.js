@@ -8,7 +8,7 @@ buttons.forEach(button=>{
         let userInput= button.textContent.toLowerCase();
         let pcChoice=getPcChoice();
         let roundResult=playRound(userInput,pcChoice)
-        displayResults(pcChoice,roundResult)
+        displayResults(pcChoice,roundResult,i,j)
     })
 })
 
@@ -18,12 +18,16 @@ const pcPlay = Math.floor(Math.random() * choices.length);
 return (choices[pcPlay]);
 }
 
-//displays the results & pc play, the counters will be added in the HTML
-function displayResults(pcChoice,roundResult){
+//displays the scores, results & pc play
+function displayResults(pcChoice,roundResult,i,j){
     const resultDisplay= document.querySelector('.resultDisplay')
     const pcDisplay =document.querySelector ('.pcDisplay')
+    const playerScore= document.querySelector('.playerScore')
+    const pcScore= document.querySelector('.pcScore')
+    playerScore.textContent = `Your score: ${i}`;
+    pcScore.textContent = `PC score: ${j}`;
     resultDisplay.textContent = roundResult;
-    pcDisplay.textContent = pcChoice;
+    pcDisplay.textContent = `PC play: ${pcChoice}`;
 }
 
 //PlayRound function plays a round of good ol' rock paper scissors
