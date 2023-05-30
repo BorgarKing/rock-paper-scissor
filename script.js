@@ -1,8 +1,9 @@
 let i = 0; //player counter
 let j = 0; //pc counter 
+const body = document.querySelector('body')
 const buttons = document.querySelectorAll('button')
 const resultDisplay= document.querySelector('.resultDisplay')
-
+const pcDisplay =document.querySelector ('.pcDisplay')
 
 //play a round using the Rock Paper Scissors buttons
 buttons.forEach(button=>{
@@ -20,7 +21,6 @@ return (choices[pcPlay]);
 
 //displays the scores, results & pc play
 function displayResults(pcChoice,roundResult,i,j){
-    const pcDisplay =document.querySelector ('.pcDisplay')
     const playerScore= document.querySelector('.playerScore')
     const pcScore= document.querySelector('.pcScore')
     playerScore.textContent = `Your score: ${i}`;
@@ -57,14 +57,27 @@ function game (userInput){
 
         if (i==3){
             resultDisplay.textContent="You won the game bro cheers !"
+            body.appendChild(playAgain)
         }
 
         else if (j==3) {
             resultDisplay.textContent= "tough luck buddy here's to living and fighting another day"
+            body.appendChild(playAgain)
         }
     }
 }
 
-// const playAgain= document.createElement('button')
-// playAgain.textContent= "Play again ?"
-// body.appendChild(playAgain)
+//A button to reload the game
+const playAgain= document.createElement('button')
+playAgain.textContent= "Play again" 
+playAgain.addEventListener('click',()=> {
+    i=0;
+    j=0
+    displayResults('','',i,j)
+    pcDisplay.textContent ='';
+    body.removeChild(playAgain) 
+})
+
+
+
+
