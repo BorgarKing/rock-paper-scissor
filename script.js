@@ -1,14 +1,14 @@
 let i = 0; //player counter
 let j = 0; //pc counter 
 const buttons = document.querySelectorAll('button')
+const resultDisplay= document.querySelector('.resultDisplay')
+
 
 //play a round using the Rock Paper Scissors buttons
 buttons.forEach(button=>{
     button.addEventListener('click',()=>{
         let userInput= button.textContent.toLowerCase();
-        let pcChoice=getPcChoice();
-        let roundResult=playRound(userInput,pcChoice)
-        displayResults(pcChoice,roundResult,i,j)
+        game(userInput)
     })
 })
 
@@ -20,7 +20,6 @@ return (choices[pcPlay]);
 
 //displays the scores, results & pc play
 function displayResults(pcChoice,roundResult,i,j){
-    const resultDisplay= document.querySelector('.resultDisplay')
     const pcDisplay =document.querySelector ('.pcDisplay')
     const playerScore= document.querySelector('.playerScore')
     const pcScore= document.querySelector('.pcScore')
@@ -50,18 +49,22 @@ function playRound (x,y){
 }
 
 //play a best of 5 game vs the PC
-// function game (){
-//     while (i<3 && j<3){
-//         pcChoice= getPcChoice();
-//         roundResult= playRound (userInput,pcChoice);
-//             console.log (`Your play: ${userInput} \nPC play: ${pcChoice}`);
-//             console.log (i,j);
-//             console.log(roundResult);
-//         return (game()) ;
-//     }
-    
-//     if (i==3){ return console.log("You won the game bro cheers !")}
-//     else if (j==3) {return console.log("tough luck buddy here's to living and fighting another day")}
+function game (userInput){
+    if (i<3 && j<3){
+        let pcChoice= getPcChoice();
+        let roundResult=playRound(userInput,pcChoice)
+        displayResults(pcChoice,roundResult,i,j)
 
-// }
+        if (i==3){
+            resultDisplay.textContent="You won the game bro cheers !"
+        }
 
+        else if (j==3) {
+            resultDisplay.textContent= "tough luck buddy here's to living and fighting another day"
+        }
+    }
+}
+
+// const playAgain= document.createElement('button')
+// playAgain.textContent= "Play again ?"
+// body.appendChild(playAgain)
